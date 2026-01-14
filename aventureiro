@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#define TAM 10
+#define NAVIO 3
+#define TAM_NAVIO 3
+
+int main() {
+    int tabuleiro[TAM][TAM];
+    int i, j;
+
+    // 1. Inicializa o tabuleiro com 0 (água)
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            tabuleiro[i][j] = 0;
+        }
+    }
+
+    // 2. Posicionamento dos navios
+
+    // Navio 1 - Horizontal
+    for (j = 2; j < 5; j++) {
+        tabuleiro[1][j] = NAVIO;
+    }
+
+    // Navio 2 - Vertical
+    for (i = 3; i < 6; i++) {
+        tabuleiro[i][7] = NAVIO;
+    }
+
+    // Navio 3 - Diagonal principal (\)
+    for (i = 0; i < TAM_NAVIO; i++) {
+        tabuleiro[5 + i][1 + i] = NAVIO;
+    }
+
+    // Navio 4 - Diagonal secundária (/)
+    for (i = 0; i < TAM_NAVIO; i++) {
+        tabuleiro[8 - i][8 - i] = NAVIO;
+    }
+
+    // 3. Exibição do tabuleiro no console
+    printf("TABULEIRO BATALHA NAVAL (10x10)\n\n");
+
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
